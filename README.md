@@ -6,6 +6,12 @@
 Inspired by [GlobalSampler](https://www.reapertips.com/post/capture-anything-in-reaper-with-global-sampler) for Reaper and [Rolling Sampler VST](https://www.birdsthings.com/).
 
 ---
+## Use Cases
+
+- Place Recall-Sampler on the master channel to capture everything.
+- Set up an arpeggio or sequence and change synth presets to record glitches.
+- Experiment with chainging presets on processing VSTs (reverb, delay, tape plugins, etc.) to capture sounds they make during preset change.
+- If you wil run standalone version, you can use it to capture audio from any source on your computer, for example sample YouTube.
 
 ## Features
 
@@ -43,14 +49,3 @@ Inspired by [GlobalSampler](https://www.reapertips.com/post/capture-anything-in-
 
 - VST3
 - Standalone application
-
----
-
-## Use Cases
-
-- Place Recall-Sampler on the master channel to capture everything.
-- Set up an arpeggio or sequence and change synth presets to record glitches.
-- Experiment with chainging presets on processing VSTs (reverb, delay, tape plugins, etc.) to capture sounds they make during preset change.
-
----
-
