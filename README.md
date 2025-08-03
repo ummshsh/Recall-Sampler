@@ -49,3 +49,7 @@ Inspired by [GlobalSampler](https://www.reapertips.com/post/capture-anything-in-
 
 - VST3
 - Standalone application
+
+# License
+
+[MIT License](LICENSE)
