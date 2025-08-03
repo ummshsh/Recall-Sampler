@@ -6,6 +6,8 @@
               pluginManufacturerCode="umms">
   <MAINGROUP id="zSWDJl" name="Recall Sampler">
     <GROUP id="{4979945E-C6F3-DCEB-F384-EDBE62A97B69}" name="Source">
+      <FILE id="XRQtwd" name="CustomLookAndFeel.h" compile="0" resource="0"
+            file="Source/CustomLookAndFeel.h"/>
       <FILE id="ZF1z52" name="ColourPalette.cpp" compile="1" resource="0"
             file="Source/ColourPalette.cpp"/>
       <FILE id="RSmhKK" name="FlashbackVisualiser.cpp" compile="1" resource="0"

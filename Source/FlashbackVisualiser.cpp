@@ -60,7 +60,19 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        g.fillAll(palette.visBackground);
+        const float cornerRadius = 12.0f;
+        auto bounds = getLocalBounds().toFloat();
+
+        g.setColour(palette.visBackground);
+        g.fillRoundedRectangle(bounds, cornerRadius);
+
+        g.setColour(palette.controlBorder);
+        g.drawRoundedRectangle(bounds, cornerRadius, 1.5f);
+
+        juce::Path clipPath;
+        clipPath.addRoundedRectangle(bounds.reduced(1.0f), cornerRadius);
+        g.reduceClipRegion(clipPath);
+
         auto& buffer = *audioProcessor.flashbackBuffer;
         auto numSamples = buffer.getNumSamples();
         if (numSamples == 0) return;
@@ -116,8 +128,11 @@ public:
         }
 
         waveformPath.closeSubPath();
-        g.setColour(palette.visWaveform);
+        g.setColour(palette.visWaveformBody);
         g.fillPath(waveformPath);
+
+        g.setColour(palette.visWaveformOutline);
+        g.strokePath(waveformPath, juce::PathStrokeType(1.f));
 
         if (!selectionArea.isEmpty())
         {
@@ -146,7 +161,7 @@ public:
         }
 
         g.setColour(palette.visCursor);
-        g.drawVerticalLine((int)cursorX, 0.0f, componentHeight);
+        g.drawVerticalLine((int)cursorX, 0.0f, (float)getHeight());
     }
 
 private:

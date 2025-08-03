@@ -1,24 +1,23 @@
 #pragma once
 #include <JuceHeader.h>
 
-
 struct ColourPalette
 {
-    // Colours for the main editor background
-    juce::Colour editorBackground{ juce::Colours::white };
+    // A single, unified background colour for the entire plugin
+    juce::Colour appBackground{ juce::Colour::fromRGB(241,245,249) };
 
     // Colours for the FlashbackVisualiser
-    juce::Colour visBackground{ juce::Colour::fromRGB(216, 219, 226) };
-    juce::Colour visWaveform{ juce::Colour::fromRGB(55, 63, 81) };
-    juce::Colour visCursor{ juce::Colour::fromRGB(88, 164, 176) };
-    juce::Colour visSelection{ juce::Colours::black.withAlpha(0.3f) };
+    juce::Colour visBackground{ juce::Colour::fromString("#FFE2E8F0") };
+    juce::Colour visWaveformBody{ juce::Colour::fromString("#FF8d99ab") };
+    juce::Colour visWaveformOutline{ juce::Colour::fromString("#FF718096") };
+    juce::Colour visCursor{ juce::Colour::fromString("#FF4299e1") };
+    juce::Colour visSelection{ juce::Colour::fromString("#FF4299e1").withAlpha(0.4f) };
 
-    // Colours for the DraggableNumberBox
-    juce::Colour numBoxBackground{ juce::Colour::fromRGBA(91, 192, 235,0.5f) };
-    juce::Colour numBoxBorder{ juce::Colours::transparentWhite };
-    juce::Colour numBoxText{ juce::Colour::fromRGB(88, 164, 176)};
+    juce::Colour controlText{ juce::Colour::fromString("#FF2d3748") };
 
     // Colours for the Freeze Button
-    juce::Colour freezeButtonOn{ juce::Colour::fromRGB(88, 164, 176) };
-    juce::Colour freezeButtonOff{ juce::Colours::grey };
+    juce::Colour freezeButtonOn{ juce::Colour::fromString("#FF1C67FC") };
+    juce::Colour freezeButtonOff{ juce::Colour::fromString("#FF718096") };
+
+    juce::Colour controlBorder{ juce::Colour::fromString("#FFCBD5E0") };
 };

@@ -2,29 +2,34 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "DraggableNumberBox.cpp"
+#include "ColourPalette.cpp"
 #include "FlashbackVisualiser.cpp"
+#include "DraggableNumberBox.cpp"
+#include "CustomLookAndFeel.h"
 
-class NewProjectAudioProcessorEditor  : public juce::AudioProcessorEditor
+class NewProjectAudioProcessorEditor : public juce::AudioProcessorEditor
 {
 public:
-    NewProjectAudioProcessorEditor (NewProjectAudioProcessor&);
-    bool saveWav(const juce::AudioSampleBuffer& buffer);
+    NewProjectAudioProcessorEditor(NewProjectAudioProcessor&);
     ~NewProjectAudioProcessorEditor() override;
 
-    void paint (juce::Graphics&) override;
+    void paint(juce::Graphics& g) override;
     void resized() override;
-private:
-    NewProjectAudioProcessor& audioProcessor;
-    juce::AudioFormatManager formatManager;
-    juce::File file;
 
+private:
+    bool saveWav(const juce::AudioSampleBuffer& buffer);
+
+    NewProjectAudioProcessor& audioProcessor;
     ColourPalette palette;
 
+    juce::File file;
+    juce::AudioFormatManager formatManager;
+
+    juce::DrawableButton freezeButton;
+    DraggableNumberBox recordTimeBox;
     FlashbackVisualiser flashbackVisualiser;
 
-    DraggableNumberBox recordTimeBox;
-    juce::DrawableButton freezeButton;
+    std::unique_ptr<CustomLookAndFeel> customLookAndFeel;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(NewProjectAudioProcessorEditor)
 };
