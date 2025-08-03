@@ -6,8 +6,10 @@ NewProjectAudioProcessor::NewProjectAudioProcessor()
     : AudioProcessor(BusesProperties()
 #if ! JucePlugin_IsMidiEffect
 #if ! JucePlugin_IsSynth
+        .withInput("Input", juce::AudioChannelSet::mono(), true)
         .withInput("Input", juce::AudioChannelSet::stereo(), true)
 #endif
+        .withOutput("Output", juce::AudioChannelSet::mono(), true)
         .withOutput("Output", juce::AudioChannelSet::stereo(), true)
 #endif
     )
@@ -146,6 +148,7 @@ bool NewProjectAudioProcessor::isBusesLayoutSupported(const BusesLayout& layouts
 #endif
 }
 #endif
+
 void NewProjectAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     if (getSampleRate() <= 0)

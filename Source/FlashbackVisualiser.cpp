@@ -72,7 +72,7 @@ public:
         const auto samplesPerPixel = (float)numSamples / componentWidth;
 
         auto* leftChannelData = buffer.getReadPointer(0);
-        auto* rightChannelData = buffer.getReadPointer(1);
+        auto* rightChannelData = buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr;
 
         std::vector<float> minValues;
         minValues.reserve(getWidth());
@@ -90,10 +90,18 @@ public:
             {
                 auto numSamplesInRange = endSample - startSample;
                 auto leftRange = juce::FloatVectorOperations::findMinAndMax(leftChannelData + startSample, numSamplesInRange);
-                auto rightRange = juce::FloatVectorOperations::findMinAndMax(rightChannelData + startSample, numSamplesInRange);
 
-                minVal = std::min(leftRange.getStart(), rightRange.getStart());
-                maxVal = std::max(leftRange.getEnd(), rightRange.getEnd());
+                if (rightChannelData != nullptr)
+                {
+                    auto rightRange = juce::FloatVectorOperations::findMinAndMax(rightChannelData + startSample, numSamplesInRange);
+                    minVal = std::min(leftRange.getStart(), rightRange.getStart());
+                    maxVal = std::max(leftRange.getEnd(), rightRange.getEnd());
+                }
+                else
+                {
+                    minVal = leftRange.getStart();
+                    maxVal = leftRange.getEnd();
+                }
             }
 
             minValues.push_back(minVal);
