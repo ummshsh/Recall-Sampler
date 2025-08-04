@@ -48,7 +48,7 @@ public:
         juce::Font customFont("Arial", 22.0f, juce::Font::bold);
         g.setFont(customFont);
 
-        juce::String textToDraw = juce::String(currentValue, 1) + "s";
+        juce::String textToDraw = juce::String(currentValue, 0) + "s";
         g.drawFittedText(textToDraw, getLocalBounds(), juce::Justification::centredLeft, 1);
     }
 

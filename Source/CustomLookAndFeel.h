@@ -19,15 +19,15 @@ public:
         {
             // "On" state: Filled blue background
             g.setColour(palette.freezeButtonOn);
-            g.fillRoundedRectangle(bounds, cornerRadius);
+            //g.fillRoundedRectangle(bounds, cornerRadius);
         }
         else
         {
             // "Off" state: White fill with a grey border
             g.setColour(juce::Colours::white);
-            g.fillRoundedRectangle(bounds, cornerRadius);
+            //g.fillRoundedRectangle(bounds, cornerRadius);
             g.setColour(palette.controlBorder);
-            g.drawRoundedRectangle(bounds, cornerRadius, 1.5f);
+            //g.drawRoundedRectangle(bounds, cornerRadius, 1.5f);
         }
 
         // Draw the icon itself on top

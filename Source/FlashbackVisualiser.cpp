@@ -60,18 +60,18 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        const float cornerRadius = 12.0f;
+        const float cornerRadius = 18.0f;
         auto bounds = getLocalBounds().toFloat();
 
         g.setColour(palette.visBackground);
         g.fillRoundedRectangle(bounds, cornerRadius);
 
         g.setColour(palette.controlBorder);
-        g.drawRoundedRectangle(bounds, cornerRadius, 1.5f);
+        //g.drawRoundedRectangle(bounds, cornerRadius, 2.f);
 
-        juce::Path clipPath;
-        clipPath.addRoundedRectangle(bounds.reduced(1.0f), cornerRadius);
-        g.reduceClipRegion(clipPath);
+        //juce::Path clipPath;
+        //clipPath.addRoundedRectangle(bounds.reduced(1.0f), cornerRadius);
+        //g.reduceClipRegion(clipPath);
 
         auto& buffer = *audioProcessor.flashbackBuffer;
         auto numSamples = buffer.getNumSamples();
